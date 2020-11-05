@@ -29,19 +29,19 @@ class Cliente extends Conexion
     {
         $stament = $this->db->prepare("INSERT INTO cliente(nombre, apellido, tipo_documento, numero_documento, telefono, correo, contraseña)VALUES (:nombre, :apellido, :tipo_documento, :numero_documento, :telefono, :correo, :contrasena)");
 
+        $password = password_hash($this->contraseña, PASSWORD_DEFAULT);
+
         $stament->bindParam(':nombre', $this->nombre);
         $stament->bindParam(':apellido', $this->apellido);
         $stament->bindParam(':tipo_documento', $this->tipo_documento);
         $stament->bindParam(':numero_documento', $this->numero_documento);
         $stament->bindParam(':telefono', $this->telefono);
         $stament->bindParam(':correo', $this->correo);
-        $stament->bindParam(':contrasena', $this->contraseña);
+        $stament->bindParam(':contrasena', $password);
         if ($stament->execute()) {
             header('Location: ../controller/consultar.php');
         } else {
             header('Location: ../controller/formulario.php');
         }
     }
-
-    
 }

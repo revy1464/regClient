@@ -26,17 +26,19 @@ class Metodos extends Conexion
 
     public function validar($correo, $pass)
     {
-        $stament = $this->db->prepare("SELECT * FROM cliente WHERE correo= :correo AND contraseña= :Password");
+        $row = null;
+        $stament = $this->db->prepare("SELECT * FROM cliente WHERE correo=:correo LIMIT 1");
         $stament->bindParam(':correo', $correo);
-        $stament->bindParam(':Password', $pass);
         $stament->execute();
 
         if ($stament->rowCount() == 1) {
-            $result = $stament->fetch();
-            $_SESSION['nombre'] = $result["nombre"] . $result["apellido"];
-            $_SESSION['correo'] = $result["correo"];
-            $_SESSION['ID'] = $result['id_cliente'];
-            return true;
+            $result = $stament->fetch(PDO::FETCH_ASSOC);
+            if (password_verify($pass, $result["contraseña"])) {
+                $_SESSION['nombre'] = $result["nombre"] . " " . $result["apellido"];
+                $_SESSION['correo'] = $result["correo"];
+                $_SESSION['ID'] = $result['id_cliente'];
+                return true;
+            }
         }
         return false;
     }

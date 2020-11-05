@@ -1,4 +1,5 @@
 <?php include("../view/includes/header.php");
+include("../Metodos.php");
 
 
 if (!isset($_SESSION)) {
@@ -31,14 +32,55 @@ if (isset($_SESSION['correo'])) {
                 <input type="submit" value="Registrar">
             </div>
         </form>
+        <div><button onclick="flotante(1)"> Mostrar Datos</button></div>
     </div>
-
-<?php
+    <!-Pantalla flotante ->
+        <div id="contenedor" style="display:none">
+            <div id="flotante">
+                <div>
+                    <?php $consulta = new Metodos(); ?>
+                    <table class="egt">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>TDoc</th>
+                            <th>Numero Documento</th>
+                            <th>Telefono</th>
+                            <th>Correo</th>
+                        </tr>
+                        <?php
+                        if (isset($_SESSION['correo'])) {
+                            $Clientes = $consulta->getClientbyCorreo($_SESSION['correo']);
+                            if ($Clientes != null) {
+                                foreach ($Clientes as $Cliente) {
+                        ?>
+                                    <tr>
+                                        <td><?php echo $Cliente['nombre'] ?></td>
+                                        <td><?php echo $Cliente['apellido'] ?></td>
+                                        <td><?php echo $Cliente['tipo_documento'] ?></td>
+                                        <td><?php echo $Cliente['numero_documento'] ?></td>
+                                        <td><?php echo $Cliente['telefono'] ?></td>
+                                        <td><?php echo $Cliente['correo'] ?></td>
+                                    </tr>
+                        <?php
+                                }
+                            }
+                        }
+                        ?>
+                    </table>
+                </div>
+                <div>
+                    <button onclick="flotante(2)">Ok</button>
+                </div>
+            </div>
+            <div id="fondo">
+                <h1>este es el fondito</h1>
+            </div>
+        </div>
+    <?php
 
 } else {
     header('Location: ../../regClient');
 }
-
-?>
-
-<?php include("../view/includes/footer.php") ?>
+    ?>
+    <?php include("../view/includes/footer.php") ?>

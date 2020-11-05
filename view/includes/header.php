@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <nav>
+    <div>Ingrese sus datos personales</div>
     <ul>
         <li> <a href="../../regClient">Inicio</a> </li>
         <li> <a href="../../regClient/controller/formulario.php">Registrar</a> </li>

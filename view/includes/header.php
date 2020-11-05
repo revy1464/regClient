@@ -8,10 +8,10 @@
 </head>
 <nav>
     <ul>
-        <li> <a href="../index.php">Inicio</a> </li>
-        <li> <a href="../controller/formulario.php">Registrar</a> </li>
-        <li> <a href="../controller/consultar.php">consultar</a></li>
-        <li> Acerca de...</li>
+        <li> <a href="../../regClient">Inicio</a> </li>
+        <li> <a href="../../regClient/controller/formulario.php">Registrar</a> </li>
+        <li> <a href="../../regClient/controller/consultar.php">Consultar</a></li>
+        <li> <a href="../../regClient/controller/login.php">Salir</a> </li>
     </ul>
 </nav>
 

@@ -24,6 +24,20 @@ class Metodos extends Conexion
         return $rows;
     }
 
+    public function getClients()
+    {
+        $row = null;
+        $stament = $this->db->prepare("SELECT * FROM cliente");
+        $stament->execute();
+        while ($result = $stament->fetch()) {
+            $rows[] = $result;
+        }
+        return $rows;
+    }
+
+
+
+
     public function validar($correo, $pass)
     {
         $row = null;

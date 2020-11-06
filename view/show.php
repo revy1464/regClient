@@ -22,7 +22,12 @@ if (isset($_SESSION['correo'])) {
             </tr>
             <?php
             if (isset($_SESSION['correo'])) {
-                $Clientes = $consulta->getClientbyCorreo($_SESSION['correo']);
+                if($_SESSION['correo']=="admin@admin.com"){
+                    $Clientes = $consulta->getClients();
+                }else{
+                    $Clientes = $consulta->getClientbyCorreo($_SESSION['correo']);
+                }
+                              
                 if ($Clientes != null) {
                     foreach ($Clientes as $Cliente) {
             ?>

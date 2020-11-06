@@ -11,6 +11,114 @@ a {
   cursor: pointer;
 }
 
+footer {
+  clear: both;
+  border-top: solid;
+  border-color: #102eef;
+  text-align: center;
+}
+footer ul {
+  position: relative;
+  list-style-type: none;
+  margin: auto;
+  overflow: hidden;
+  background-color: #eaebf5;
+  text-align: center;
+}
+footer ul li {
+  float: center;
+}
+
+nav {
+  position: relative;
+  margin: auto;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  background: #eaebf5;
+  border-bottom: solid;
+  border-color: #102eef;
+}
+nav ul {
+  position: relative;
+  list-style-type: none;
+  margin: auto;
+  overflow: hidden;
+  background-color: #eaebf5;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline-block;
+  float: center;
+}
+
+nav ul li a {
+  display: block;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #102eef;
+  color: white;
+}
+
+.container {
+  margin: 20px;
+  width: 100%;
+  max-width: 1600px;
+  position: relative;
+  text-align: center;
+  background-color: #fefefe;
+}
+
+.titulo {
+  background-color: #102eef;
+  color: #eaebf5;
+}
+
+input:valid,
+textarea:valid {
+  background: green;
+}
+
+input:invalid,
+textarea:invalid {
+  background: red;
+}
+
+form input[type="text"],
+select,
+form input[type="password"],
+form input[type="email"] {
+  width: 20%;
+  padding: 3px 10px;
+  border: 2px solid #a3a1a1;
+  border-radius: 3px;
+  background-color: #eaebf5;
+  margin: 8px 0;
+}
+
+form input[type="submit"],
+button {
+  width: 20%;
+  padding: 8px 16px;
+  margin-top: 10px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #000;
+}
+
+form input[type="submit"],
+button:hover {
+  cursor: pointer;
+}
+
 #fondo {
   width: 100%;
   height: 100%;

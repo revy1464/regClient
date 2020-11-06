@@ -1,6 +1,6 @@
 <?php include("view/includes/header.php") ?>
 
-<div>
+<div class="container">
     <div>Iniciar Sesion</div>
     <form action="controller/login.php" method="post">
         <div><input type="email" name="email" id="" placeholder="Ingrese Correo"></div>

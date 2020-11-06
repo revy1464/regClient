@@ -10,12 +10,12 @@ if (isset($_SESSION['correo'])) {
 
 ?>
 
-    <div>
+    <div class="container">
         <h1>Hola <?php echo $_SESSION['nombre']; ?></h1>
         <div>Ingrese sus datos personales</div>
         <form action="../controller/registrar.php" method="post">
-            <div><input type="text" name="nombre" id="" placeholder="Nombre"></div>
-            <div><input type="text" name="apellido" id="" placeholder="Apellido"></div>
+            <div><input type="text" name="nombre" id="" placeholder="Nombre" required pattern="[A-Za-z\s]{3,40}"></div>
+            <div><input type="text" name="apellido" id="" placeholder="Apellido" required pattern="[A-Za-z\s]{3,40}"></div>
             <div>
                 <select name="tipo_documento" id="">
                     <option value="CC">Cedula</option>
@@ -23,11 +23,11 @@ if (isset($_SESSION['correo'])) {
                     <option value="TI">Tarjeta de identidad</option>
                 </select>
             </div>
-            <div><input type="text" name="ndocumento" id="" placeholder="Numero de Documento"></div>
-            <div><input type="text" name="telefono" id="" placeholder="Telefono"></div>
-            <div><input type="text" name="correo" id="" placeholder="Correo"></div>
-            <div><input type="password" name="contraseña" id="" placeholder="Ingresa una contraseña"></div>
-            <div><input type="password" name="contrasenaCheck" id="" placeholder="Verifica tu contraseña"></div>
+            <div><input type="text" name="ndocumento" id="" placeholder="Numero de Documento" required pattern="[0-9]{7,40}"></div>
+            <div><input type="text" name="telefono" id="" placeholder="Teléfono" required pattern="[0-9]{7,10}"></div>
+            <div><input type="email" name="correo" id="" placeholder="Correo" required></div>
+            <div><input type="password" name="contraseña" id="" placeholder="Ingresa una contraseña" required></div>
+            <div><input type="password" name="contrasenaCheck" id="" placeholder="Verifica tu contraseña" required></div>
             <div>
                 <input type="submit" value="Registrar">
             </div>

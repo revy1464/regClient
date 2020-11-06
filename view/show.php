@@ -9,7 +9,7 @@ if (!isset($_SESSION)) {
 if (isset($_SESSION['correo'])) {
     $consulta = new Metodos();
 ?>
-    <div>
+    <div class="container">
         <table class="egt">
 
             <tr>

@@ -1,6 +1,10 @@
 <?php
 require_once('../model/Cliente.php');
 
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 if ($_POST) {
 
     $nombre = $_POST['nombre'];
@@ -11,9 +15,11 @@ if ($_POST) {
     $correo = $_POST['correo'];
     $contraseña = $_POST['contraseña'];
 
-    echo $telefono;
-
     $Cliente = new Cliente($nombre, $apellido, $tipo_documento, $numero_documento, $telefono, $correo, $contraseña);
 
-    $Cliente->registrar();
+    if (isset($_SESSION['correo'])) {
+        $Cliente->modificar();
+    } else {
+        $Cliente->registrar();
+    }
 }

@@ -1,15 +1,10 @@
 <?php include("../view/includes/header.php");
 include("../Metodos.php");
 
-
 if (!isset($_SESSION)) {
     session_start();
 }
-
-//if (isset($_SESSION['correo'])) {
-
 ?>
-
 <div class="container">
     <h1>Hola <?php echo  $nuevo = empty($_SESSION['correo']) ? "Invitado" : $_SESSION['nombre']; ?></h1>
     <div>Ingrese sus datos personales</div>
@@ -84,4 +79,7 @@ if (!isset($_SESSION)) {
         header('Location: ../../regClient');
     }
     */?>
+    <div style="text-align: right;">
+        <?php echo  empty($_SESSION['mensaje']) ? "" : $_SESSION['mensaje']; ?>
+    </div>
     <?php include("../view/includes/footer.php") ?>

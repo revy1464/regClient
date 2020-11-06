@@ -14,7 +14,7 @@ class Metodos extends Conexion
 
     public function getClientbyCorreo($correo)
     {
-        $row = null;
+
         $stament = $this->db->prepare("SELECT * FROM cliente WHERE correo=:correo");
         $stament->bindParam(':correo', $correo);
         $stament->execute();
@@ -26,7 +26,7 @@ class Metodos extends Conexion
 
     public function getClients()
     {
-        $row = null;
+
         $stament = $this->db->prepare("SELECT * FROM cliente");
         $stament->execute();
         while ($result = $stament->fetch()) {

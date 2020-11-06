@@ -1,7 +1,10 @@
 <?php
 
 require_once("../Conexion.php");
-session_start();
+require_once("../Metodos.php");
+if (!isset($_SESSION)) {
+    session_start();
+}
 class Cliente extends Conexion
 {
 
@@ -27,29 +30,39 @@ class Cliente extends Conexion
 
     public function registrar()
     {
-        $stament = $this->db->prepare("INSERT INTO cliente(nombre, apellido, tipo_documento, numero_documento, telefono, correo, contraseña)VALUES (:nombre, :apellido, :tipo_documento, :numero_documento, :telefono, :correo, :contrasena)");
+        $consulta = new Metodos();
+        $row = $consulta->getClientbyCorreo($this->correo);
+        if (sizeof($row) <= 0) {
+            $stament = $this->db->prepare("INSERT INTO cliente(nombre, apellido, tipo_documento, numero_documento, telefono, correo, contraseña)VALUES (:nombre, :apellido, :tipo_documento, :numero_documento, :telefono, :correo, :contrasena)");
 
-        $password = password_hash($this->contraseña, PASSWORD_DEFAULT);
+            $password = password_hash($this->contraseña, PASSWORD_DEFAULT);
 
-        $stament->bindParam(':nombre', $this->nombre);
-        $stament->bindParam(':apellido', $this->apellido);
-        $stament->bindParam(':tipo_documento', $this->tipo_documento);
-        $stament->bindParam(':numero_documento', $this->numero_documento);
-        $stament->bindParam(':telefono', $this->telefono);
-        $stament->bindParam(':correo', $this->correo);
-        $stament->bindParam(':contrasena', $password);
-        if ($stament->execute()) {
-            header('Location: ../controller/consultar.php');
+            $stament->bindParam(':nombre', $this->nombre);
+            $stament->bindParam(':apellido', $this->apellido);
+            $stament->bindParam(':tipo_documento', $this->tipo_documento);
+            $stament->bindParam(':numero_documento', $this->numero_documento);
+            $stament->bindParam(':telefono', $this->telefono);
+            $stament->bindParam(':correo', $this->correo);
+            $stament->bindParam(':contrasena', $password);
+            if ($stament->execute()) {
+                //$_SESSION['mensaje'] = "Registrado con Exito";
+                header('Location: ../controller/consultar.php');
+            } else {
+                //$_SESSION['mensaje'] = "El cliente ya no se puedo registrar, intente de nuevo";
+                header('Location: ../../regClient/error.php');
+            }
         } else {
-            header('Location: ../controller/formulario.php');
+            //$_SESSION['mensaje'] = "El cliente ya esta registrado, intente de nuevo";
+
+            header('Location: ../../regClient/error.php');
         }
     }
 
     public function modificar()
     {
-        
-        $stament=$this->db->prepare("UPDATE cliente SET nombre=:nombre, apellido=:apellido, tipo_documento=:tipo_documento, telefono=:telefono,  correo=:correo, contraseña=:contrasena WHERE correo=:correo");
-        
+
+        $stament = $this->db->prepare("UPDATE cliente SET nombre=:nombre, apellido=:apellido, tipo_documento=:tipo_documento, telefono=:telefono,  correo=:correo, contraseña=:contrasena WHERE correo=:correo");
+
         //$stament = $this->db->prepare("INSERT INTO cliente(nombre, apellido, tipo_documento, numero_documento, telefono, correo, contraseña)VALUES (:nombre, :apellido, :tipo_documento, :numero_documento, :telefono, :correo, :contrasena)");
 
         $password = password_hash($this->contraseña, PASSWORD_DEFAULT);
@@ -62,8 +75,10 @@ class Cliente extends Conexion
         $stament->bindParam(':correo', $this->correo);
         $stament->bindParam(':contrasena', $password);
         if ($stament->execute()) {
+            //$_SESSION['mensaje'] = "Modificado con Exito";
             header('Location: ../controller/consultar.php');
         } else {
+            ///$_SESSION['mensaje'] = "El cliente no se puedo registrar, intente de nuevo";
             header('Location: ../controller/formulario.php');
         }
     }

@@ -119,6 +119,21 @@ button:hover {
   cursor: pointer;
 }
 
+table {
+  width: 95%;
+  border-collapse: collapse;
+  margin: 0 0 1em 0;
+  caption-side: top;
+}
+
+th,
+td {
+  width: 10%;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid #000;
+}
+
 #fondo {
   width: 100%;
   height: 100%;
@@ -130,16 +145,16 @@ button:hover {
   background: #000;
 }
 #flotante {
-  width: 35% !important;
+  width: 50% !important;
   z-index: 999;
   border: 8px solid #fff;
   margin-top: -756px;
   margin-left: -153px;
-  top: 50%;
-  left: 50%;
+  top: 35%;
+  left: 35%;
   padding: 12px;
   position: fixed;
-  width: 265px;
+  width: auto;
   background-color: #fff;
   border-radius: 3px;
 }

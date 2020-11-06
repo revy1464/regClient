@@ -40,7 +40,7 @@ if (!isset($_SESSION)) {
         <div id="flotante">
             <div>
                 <?php $consulta = new Metodos(); ?>
-                <table class="egt">
+                <table>
                     <tr>
                         <th>Nombre</th>
                         <th>Apellido</th>
@@ -70,7 +70,7 @@ if (!isset($_SESSION)) {
                     ?>
                 </table>
             </div>
-            <div>
+            <div style="align-items:center">
                 <button onclick="flotante(2)">Ok</button>
             </div>
         </div>

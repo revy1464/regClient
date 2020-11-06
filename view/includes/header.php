@@ -13,7 +13,7 @@
         <h1>Aplicativo para el registro de datos Personales.</h1>
     </div>
     <ul>
-        <li> <a href="../../regClient">Inicio</a> </li>
+        <li> <a href="../../regClient/controller/formulario.php">Inicio</a> </li>
         <li> <a href="../../regClient/controller/formulario.php">Registrar</a> </li>
         <li> <a href="../../regClient/controller/consultar.php">Consultar</a></li>
         <li> <a href="../../regClient/controller/login.php">Salir</a> </li>
